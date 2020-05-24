@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos){
+                console.log("success")
+                console.log(pos.coords.latitude);
+                let latitude = pos.coords.latitude;
+                let longitude = pos.coords.longitude;
+                fetch("/location?lat="+latitude+"&long="+longitude).then(function(res){
+                    res.json().then(function(data){
+                        console.log(data)
+                    });
+                });
+            });
+        } else { 
+            let str =  "Location is not fetched Please enter your city name";
+            console.log(str);
+        }    
+</script>
+</head>
+<body  style="background-image: url(<%=img%>); align-items: center;" >
+    <h1>Welcome</h1>
+    <h5>Know your place weather conditions to enjoy the outdoors</h5>
+    <button onclick="location.href='/location';">current location</button>
+    <div class="head">
+        <form action="/" method="POST">
+            <input type="text" class="form-control form-control-lg" placeholder="Enter your CityName" name="cityname">
+            <button type="submit" class="btn btn-lg submitbutton">Go</button>
+            </form>
+    </div>
+    <div class = "row view">
+        <div class="col-md-9" id = "detailsview">
+            <h3><%=desc1%></h3>
+            <h3><%=desc2%></h3>
+            <h4>Here are our suggested timings to enjoy outside</h4>
+            <ul>
+                <%for(var i=0;i<newListItems.length;i++){%>
+                    <li><%= newListItems[i]%></li>
+                <%}%>
+            </ul>
+           
+        </div>
+        <div class="col-md-3" id = "detailsview">
+            <p>Summary: <%=summary%></p>
+            <p>Temperature : <%=temp%></p>
+            <p>Humidity: <%=humidity%></p>
+            <p>Pressure: <%=pressure%></p>
+            <p>Wind Speed: <%=windspeed%></p>
+            <p>Visibility: <%=visibility%></p>
+            <p>UV Index: <%=uvindex%></p>
+            <p>Time: <%=time%></p>    
+        </div>
+    </div>
+    <h1>Our Suggestions</h1>
+    <div class="row view"> 
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="gpeople.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Hangout Outside</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="outdoor.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Play Outdoor Games</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="code.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Code</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row view"> 
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="music.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Enjoy Music</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="cook.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Dining Outside</h3>
+            </div>
+        </div>
+        <div class="col-sm-4 sViews">
+            <div class = "subview">
+                <img src="party.png" alt=""  style="max-width: 100%; height: 200px; text-align: center;">
+                <h3>Party Outside</h3>
+            </div>
+        </div>
+    </div> 
+    <div class="jumbotron text-center" style="margin-bottom:0" id="footer">
+        <p style="color:#E1E7EE">Weather Info</p>
+        <p style="color:#E1E7EE">Contact me at lalithpunepalli@gmail.com</p>
+        <p style="color:#E1E7EE">Follow me @</p>
+    <a href="https://www.instagram.com/iamlalith_reddy/" target="-blank"><img src="instagram logo.jpg" height="50" width="50" class="e"></a>
+    <a href="https://linkedin.com/in/lalith-reddy-605480167" target="-blank"><img src="linkedinlogo.png" height="50" width="50" class="e"></a>
+    <a href="https://twitter.com/iamlalithreddy" target="-blank"><img src="twitterlogo.png" height="50" width="50" class="e"></a>
+        <p>Credits</p>
+        <a href="https://icons8.com" target="_blank">Icons from icons8.com</a><br>
+        <a href="https://pixabay.com" target="_blank">Background from pixabay.com</a>
+      </div>
+</body>
+</html>

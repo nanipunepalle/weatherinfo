@@ -1,0 +1,88 @@
+body{
+    background-image: url("image1.jpg");
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+h1{
+    padding-top: 50px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 50px;
+}
+h5{
+    padding: 10px;
+    color: aliceblue;
+    text-align: center;
+    font-size: 25px;
+}
+.head{
+    /* background: url(new.jpg); */
+    padding: 100px;
+    text-align: center;
+}
+p{
+    color: aliceblue; 
+}
+h3{
+    color: aliceblue;
+    text-align: center; 
+}
+button{
+    float: right;
+    /* background-color: black; */
+}
+#detailsview{
+    /* margin-left: 70px; */
+    padding: 20px;
+    float: left;
+    background-color: black;
+    opacity: 0.5;
+}
+.sViews{
+    float: left;
+    /* background-color: black; */
+    /* opacity: 0.4; */
+    height: 300px;
+    text-align: center;
+    /* margin: 10px; */
+
+}
+.subview{
+    height: 300px;
+    background-color: black;
+    opacity: 0.6;
+    /* display: inline-block; */
+    padding: 50px;
+}
+
+.view{
+    margin: 50px;
+}
+
+h4{
+    
+    color: aliceblue; 
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+    color: aliceblue; 
+    text-align: center;
+}
+
+.submitbutton{
+    background-color: black;
+    color: whitesmoke;
+    width: 200px;
+}
+
+#footer
+{
+  background-color: black;
+  /* opacity: 0.5; */
+}
+a{
+    color: whitesmoke;
+}
