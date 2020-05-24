@@ -1,8 +1,8 @@
 body{
-    background-image: url("image1.jpg");
+    background-image: url("default.jpg");
     background-attachment: fixed;
     background-repeat:no-repeat;
-    background-position:center;
+    /* background-position:center; */
 }
 h1{
     padding-top: 50px;
@@ -75,7 +75,7 @@ li{
 .submitbutton{
     background-color: black;
     color: whitesmoke;
-    width: 200px;
+    max-width: 200px;
 }
 
 #footer
