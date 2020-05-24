@@ -120,6 +120,25 @@ app.get("/location",function(req,res){
         visibility = forecastdata.currently.visibility;
         uvIndex = forecastdata.currently.uvIndex;
         time = forecastdata.currently.time;
+        gDate.setUTCSeconds(time);
+                time = gDate.toString();
+                desc1 = forecastdata.hourly.summary;
+                if(uvIndex < 4 && temp <= 30 && temp >=12){
+                    desc2 = "Great! Go ahead and enjpy your outdoors";
+                }
+                else{
+                    desc2 = "You need to wait for right moment";
+                }
+                let todayHoursData = forecastdata.hourly.data;
+                todayHoursData.forEach(function(value){
+                    if(value.uvIndex < 4 && value.temperature <= 30 && value.temperature >=12){
+                        let t = value.time;
+                        let d = new Date(0);
+                        d.setUTCSeconds(t);
+                        items.push(d.toString());
+                        console.log(d.toString());
+                    }
+                });
         // img = forecastdata.currently.icon + ".jpg"
         // res.render("index",{
         //     summary: summary,
