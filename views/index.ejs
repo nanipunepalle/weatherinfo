@@ -12,29 +12,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script>
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos){
-                console.log("success")
-                console.log(pos.coords.latitude);
-                let latitude = pos.coords.latitude;
-                let longitude = pos.coords.longitude;
-                fetch("/location?lat="+latitude+"&long="+longitude).then(function(res){
-                    res.json().then(function(data){
-                        console.log(data)
-                    });
-                });
-            });
-        } else { 
-            let str =  "Location is not fetched Please enter your city name";
-            console.log(str);
-        }    
-</script>
 </head>
 <body  style="background-image: url(<%=img%>); align-items: center;" >
     <h1>Welcome</h1>
     <h5>Know your place weather conditions to enjoy the outdoors</h5>
-    <button onclick="location.href='/location';">current location</button>
+    <!-- <button onclick="location.href='/location';">current location</button> -->
     <div class="head">
         <form action="/" method="POST">
             <input type="text" class="form-control form-control-lg" placeholder="Enter your CityName" name="cityname">
@@ -117,5 +99,24 @@
         <a href="https://pixabay.com" target="_blank">Background from pixabay.com</a><br>
         <a href="https://darksky.net">Data from darksky.net</a>
       </div>
+
+      <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos){
+                console.log("success")
+                console.log(pos.coords.latitude);
+                let latitude = pos.coords.latitude;
+                let longitude = pos.coords.longitude;
+                fetch("/location?lat="+latitude+"&long="+longitude).then(function(res){
+                    res.json().then(function(data){
+                        console.log(data)
+                    });
+                });
+            });
+        } else { 
+            let str =  "Location is not fetched Please enter your city name";
+            console.log(str);
+        }    
+</script>
 </body>
 </html>
